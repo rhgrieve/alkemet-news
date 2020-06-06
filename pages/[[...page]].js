@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import classNames from 'classnames';
 
 import { getTopPostsByPage } from '../lib/hn';
 
@@ -18,6 +19,14 @@ export default function Home({ posts }) {
         <div>
           {posts &&
             posts.map((post) => {
+              const scoreStyles = classNames({
+                'text-orange-500': post.score > 300 ? true : false,
+              });
+
+              const descendantStyles = classNames({
+                'text-orange-500 font-bold':
+                  post.descendants > 100 ? true : false,
+              });
               return (
                 <div key={post.id} className="my-2">
                   <a href={post.url} target="_blank">
@@ -29,12 +38,16 @@ export default function Home({ posts }) {
 
                   <div className="flex flex-row text-xs">
                     <p className="mr-1">
-                      <strong>{post.score}</strong> points
+                      <strong className={scoreStyles}>{post.score}</strong>{' '}
+                      points
                     </p>
                     <p className="mr-1">by {post.by}</p>
                     <p className="mr-1">
-                      | {post.descendants || 0}{' '}
-                      {`comment${post.descendants === 1 ? '' : 's'}`}
+                      |{' '}
+                      <span className={descendantStyles}>
+                        {post.descendants || 0}
+                      </span>
+                      {` comment${post.descendants === 1 ? '' : 's'}`}
                     </p>
                   </div>
                 </div>
