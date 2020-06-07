@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { getItemById } from '../utils/hn';
 import moment from 'moment';
 
+import Link from 'next/link';
+
 export default function Comment({ cId, className }) {
   var [comment, setComment] = useState({});
 
@@ -23,11 +25,12 @@ export default function Comment({ cId, className }) {
 
   return (
     <div className={`text-sm ${className}`}>
-      {console.log(comment)}
       <div>
-        <p className="text-xs text-gray-600 mb-1">
+        <p className="text-xs text-gray-600">
           {comment && comment.by}{' '}
-          {moment.unix(comment && comment.time).fromNow()}
+          <Link href={`/item/${comment.id}`}>
+            <a>{moment.unix(comment && comment.time).fromNow()}</a>
+          </Link>
         </p>
       </div>
       <div

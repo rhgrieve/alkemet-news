@@ -9,7 +9,7 @@ import { parse } from 'url';
 
 export default function Home({ posts }) {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto max-w-3xl">
       <Head>
         <title>Alkemet News</title>
         <link rel="icon" href="/favicon.ico" />
@@ -31,16 +31,21 @@ export default function Home({ posts }) {
               return (
                 <div key={post.id} className="my-2">
                   <div className="flex flex-row">
-                    <a href={post.url} target="_blank">
-                      {post.title}{' '}
-                      <span className="text-gray-700 text-sm">
-                        (
-                        {post.url
-                          ? parse(post.url).hostname.replace('www.', '')
-                          : 'self'}
-                        )
-                      </span>
-                    </a>
+                    {post.url ? (
+                      <a href={post.url} target="_blank">
+                        {post.title}{' '}
+                        <span className="text-gray-700 text-sm">
+                          ({parse(post.url).hostname.replace('www.', '')})
+                        </span>
+                      </a>
+                    ) : (
+                      <Link href={`/item/${post.id}`}>
+                        <a>
+                          {post.title}{' '}
+                          <span className="text-gray-700 text-sm">(self)</span>
+                        </a>
+                      </Link>
+                    )}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
