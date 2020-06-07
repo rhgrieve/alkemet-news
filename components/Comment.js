@@ -4,7 +4,6 @@ import moment from 'moment';
 
 export default function Comment({ cId, className }) {
   var [comment, setComment] = useState({});
-  var [children, setChildren] = useState();
 
   async function fetchComment(cId) {
     await getItemById(cId).then((res) => {
@@ -18,18 +17,13 @@ export default function Comment({ cId, className }) {
 
   const nestedComments = ((comment && comment.kids) || []).map(
     (comment, index) => {
-      return (
-        <Comment
-          className={`ml-${(index + 1) * 6}`}
-          key={comment}
-          cId={comment}
-        />
-      );
+      return <Comment className={`ml-6`} key={comment} cId={comment} />;
     }
   );
 
   return (
     <div className={`text-sm ${className}`}>
+      {console.log(comment)}
       <div>
         <p className="text-xs text-gray-600 mb-1">
           {comment && comment.by}{' '}
