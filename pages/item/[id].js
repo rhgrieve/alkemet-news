@@ -4,7 +4,7 @@ import { parse } from 'url';
 import classNames from 'classnames';
 import moment from 'moment';
 
-import { getItemById } from '../../lib/hn';
+import { getItemById } from '../../utils/hn';
 
 import Comment from '../../components/Comment';
 
@@ -26,7 +26,7 @@ export default function Item({ item }) {
       <main className="p-4">
         <h1 className="text-2xl">
           <Link href="/">
-            <a>Hacker News</a>
+            <a>Alkemet News</a>
           </Link>
         </h1>
         <div key={item.id} className="my-2">
@@ -60,7 +60,7 @@ export default function Item({ item }) {
           </div>
         </div>
         {item.kids.map((comment) => {
-          return <Comment cId={comment} />;
+          return <Comment key={comment} className="my-6" cId={comment} />;
         })}
       </main>
     </div>

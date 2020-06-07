@@ -3,7 +3,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import moment from 'moment';
 
-import { getTopPostsByPage } from '../lib/hn';
+import { getTopPostsByPage } from '../utils/hn';
 
 import { parse } from 'url';
 
@@ -11,12 +11,12 @@ export default function Home({ posts }) {
   return (
     <div className="container mx-auto">
       <Head>
-        <title>Hacker News</title>
+        <title>Alkemet News</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="p-4">
-        <h1 className="text-2xl">Hacker News</h1>
+        <h1 className="text-2xl">Alkemet News</h1>
         <div>
           {posts &&
             posts.map((post) => {
