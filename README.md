@@ -1,4 +1,8 @@
+# About
+
 A Hacker News clone made with [Next.js](https://nextjs.org/) and [Tailwind.css](https://tailwindcss.com/)
+
+Demo: [alkemet-news.now.sh/](https://alkemet-news.now.sh/)
 
 ## Getting Started
 
@@ -62,3 +66,5 @@ localhost:3000/2 : page 2
 [Next.js](https://nextjs.org/)
 
 [Tailwind.css](https://tailwindcss.com/)
+
+[Vercel](https://vercel.com/)
