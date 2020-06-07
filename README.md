@@ -1,8 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A Hacker News clone made with [Next.js](https://nextjs.org/) and [Tailwind.css](https://tailwindcss.com/)
 
 ## Getting Started
-
-First, run the development server:
 
 ```bash
 npm run dev
@@ -14,17 +12,53 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+### Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### pages/[[...page]].js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Uses Next.js optional catch-all dynamic routes (experimental) to load paginated results
 
-## Deploy on Vercel
+```text
+ex.
+localhost:3000/ : page 1
+localhost:3000/2 : page 2
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### pages/[id].js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Loads story view by ID
+- Init comment load
+
+### Components
+
+#### components/Comment.js
+
+- Loads comment data by ID
+- Recursively builds nested comment structure
+
+## TODO
+
+### Views/Components
+
+- [x] Top stories list
+- [x] Story detail view
+- [x] Comment view
+- [x] Nested comment recursive component
+- [ ] User view
+- [ ] Componentize views
+- [ ] Implement React.Suspense at listing + story level
+
+### Performance
+
+- [ ] Load nested comments at story level
+- [ ] Caching
+
+## Resources
+
+[Hacker News API](https://github.com/HackerNews/API)
+
+[Next.js](https://nextjs.org/)
+
+[Tailwind.css](https://tailwindcss.com/)
