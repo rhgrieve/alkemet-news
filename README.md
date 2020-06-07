@@ -26,9 +26,9 @@ localhost:3000/ : page 1
 localhost:3000/2 : page 2
 ```
 
-#### pages/[id].js
+#### pages/item/[id].js
 
-- Loads story view by ID
+- Loads item view by ID
 - Init comment load
 
 ### Components
@@ -43,17 +43,17 @@ localhost:3000/2 : page 2
 ### Views/Components
 
 - [x] Top stories list
-- [x] Story detail view
+- [x] item detail view
 - [x] Comment view
 - [x] Nested comment recursive component
 - [ ] User view
 - [ ] Componentize views
-- [ ] Implement React.Suspense at listing + story level
+- [ ] Implement React.Suspense at listing + item level
 
 ### Performance
 
-- [ ] Load nested comments at story level
-- [ ] Caching
+- [ ] Load nested comments at item level
+- [ ] Cache results
 
 ## Resources
 
