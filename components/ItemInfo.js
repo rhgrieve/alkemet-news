@@ -2,7 +2,7 @@ import { parse } from 'url';
 
 export default function ItemInfo({ item }) {
   return (
-    <div key={item.id} className="my-2">
+    <div key={item.id} className="mt-2">
       <div className="flex flex-row">
         <a href={item.url} target="_blank">
           {item.title}{' '}
