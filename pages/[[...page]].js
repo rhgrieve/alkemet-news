@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import moment from 'moment';
 
@@ -8,6 +9,7 @@ import { getTopPostsByPage } from '../utils/hn';
 import { parse } from 'url';
 
 export default function Home({ posts }) {
+  const router = useRouter();
   return (
     <div className="container mx-auto max-w-3xl">
       <Head>
@@ -78,6 +80,27 @@ export default function Home({ posts }) {
               );
             })}
         </div>
+        {router.asPath != '/' && (
+          <Link
+            href={`/${
+              router.asPath === ('/2' || '/1')
+                ? ''
+                : parseInt(router.asPath.replace('/', '')) - 1
+            }`}
+          >
+            <a className="mr-6">&lt; Back</a>
+          </Link>
+        )}
+
+        <Link
+          href={`/${
+            router.asPath === '/'
+              ? '2'
+              : parseInt(router.asPath.replace('/', '')) + 1
+          }`}
+        >
+          <a>Next &gt;</a>
+        </Link>
       </main>
     </div>
   );
